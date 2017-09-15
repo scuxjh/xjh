@@ -119,11 +119,11 @@
 			</div>
 			<div id="navbar" class="navbar-collapse collapse">
           		<ul class="nav navbar-nav navbar-right">
-            		<li class="active" data-target="#carousel-example-generic" data-slide-to="0"><a href="#">首页</a></li>
-            		<li data-target="#carousel-example-generic" data-slide-to="1"><a href="#">社区新闻</a></li>
-            		<li data-target="#carousel-example-generic" data-slide-to="2"><a href="#">发展献策</a></li>
-            		<li data-target="#carousel-example-generic" data-slide-to="3"><a href="#">问题反映</a></li>
-            		<li data-target="#carousel-example-generic" data-slide-to="4"><a href="#">问卷调查</a></li>
+            		<li class="active" data-target="#carousel-example-generic" data-slide-to="0" name="navbarItem"><a href="#">首页</a></li>
+            		<li data-target="#carousel-example-generic" data-slide-to="1" name="navbarItem"><a href="#">社区新闻</a></li>
+            		<li data-target="#carousel-example-generic" data-slide-to="2" name="navbarItem"><a href="#">发展献策</a></li>
+            		<li data-target="#carousel-example-generic" data-slide-to="3" name="navbarItem"><a href="#">问题反映</a></li>
+            		<li data-target="#carousel-example-generic" data-slide-to="4" name="navbarItem"><a href="#">问卷调查</a></li>
             <!-- 
             <li class="dropdown">
               			<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
@@ -144,6 +144,7 @@
 	</nav>
 	<%-- 中间 --%>
 	<div id="mainContainer" style="min-height:650px;display:block;margin-top:70px;"><!--  -->
+	  <div id="itemHtml"></div>
 	  <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
   <!-- Indicators -->
   <ol class="carousel-indicators">
@@ -258,8 +259,9 @@
 </body>
 </html>
 <script>
-//var baseUrl = "http://cwsn2016.scu.edu.cn:9090";
 var contextPath = '${pageContext.request.contextPath}';
+//全局变量保存走马灯内容。20170915pm
+var carouselContent = null;
 //20160711nt 全局变量，表格Grid各列的宽度值。
 var col_mini = "25px";
 var col_xs = "30px";//超小
@@ -267,6 +269,12 @@ var col_sm = "70px";//小
 var col_md = "100px";//中等
 var col_lg = "120px";//大
 $(function(){
+	carouselContent = $('#mainContainer').children();
+	$('[name="navbarItem"]').on('click', function(){
+		//console.log("navbarItem on click.");
+		$('#itemHtml').hide();
+		$('#carousel-example-generic').show();
+	});
 /*
 	$('[data-toggle="tooltip"]').tooltip();//must initialize this yourself.
 		var self = $(this);
@@ -283,36 +291,18 @@ $(function(){
 /**
  * 显示每个模块详情页面
    1 社区新闻；2 发展献策；3 问题反映；4 问卷调查
+   20170915pm
+       1.修改每个场景详情显示方式；
  */
 var showDetail = function(type){
-	//alert("11,in showDetail,type:"+type);
-	var url = contextPath + '/pages/common/template/ModalDialog-template-full.jsp';
-	$.get(url).done(function(html) {
-		var $dialog = $(html);
-        $dialog.find(".modal-title").html("详情");
-        /*$dialog.find("#saveBtn").remove();
-    	$dialog.find("#cancelBtn").html("关闭");
-    	*/
-        //url = contextPath + '/pages/domain/news/news-list.jsp';
-    	url = '/pages/domain/news/news-list.jsp';
-    	//alert("url:"+url);
-        $.get(url).done(function(newsListHtml){
-        	var $newsListHtml = $(newsListHtml);
-        	//$newsListHtml.find("#teachclassStuListQuery").remove();
-      	    $dialog.find(".modal-body").html($newsListHtml);
-      	    /*$theGrid = $grid_teachClassStu.getGrid();
-      	    $theGrid.options.url += "?teachClassId="+teachClassId;
-      	    $theGrid.options.teachClassId = teachClassId;
-      	    */
-        });
-        //显示对话框数据
-        $dialog.modal({
-            keyboard: false
-           ,backdrop: false // 指定当前页为静态页面，如果不写后台页面就是黑色。
-        }).on({
-        	'hidden.bs.modal': function(){
-                $(this).remove();
-        }});
+	//console.log("11,in showDetail,type:"+type);
+	carouselContent.hide();
+	
+	var url = '/pages/domain/news/news-list.jsp';
+	var $listHtml = null;
+	$.get(url).done(function(newsListHtml){
+		$listHtml = $(newsListHtml);
+		$('#itemHtml').show().html($listHtml);
 	});
 };
 </script>
