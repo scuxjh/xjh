@@ -147,7 +147,7 @@ var addNews = function($grid, newsId){
        1.new.
  */
 var viewNews = function(id){
-	var url = contextPath + "/pages/common/template/ModalDialog-template.jsp";
+	var url = contextPath + "/pages/common/template/ModalDialog-template-full.jsp";
     $.get(url).done(function(html){
     	var $dialog = $(html);
     	//$dialog.find(".modal-title").html("查看");

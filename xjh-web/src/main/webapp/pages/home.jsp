@@ -175,7 +175,7 @@
       <img src="../images/news.jpg" alt="../images" style="width:100%;height:650px;">
       <div class="carousel-caption">
       	<h1>社区新闻</h1>
-      	<p class="profile">社区新闻具体内容。。。。</p>
+      	<p class="profile">社区新闻具体内容。</p>
       	<p>
       		<button type="button" id="myButton" data-loading-text="Loading..." class="btn btn-primary" autocomplete="off" style="margin-left:50%;" onclick="showDetail(1);">
   				详情>>
@@ -187,7 +187,7 @@
       <img src="../images/policy.jpg" alt="../images" style="width:100%;height:650px;">
       <div class="carousel-caption">
         <h1>发展献策</h1>
-      	<p class="profile">发展献策具体内容。。。。</p>
+      	<p class="profile">发展献策具体内容。</p>
       	<p>
       		<button type="button" id="myButton" data-loading-text="Loading..." class="btn btn-primary" autocomplete="off" style="margin-left:50%;" onclick="showDetail(2);">
   				详情...
@@ -199,7 +199,7 @@
       <img src="../images/feed.jpg" alt="../images" style="width:100%;height:650px;">
       <div class="carousel-caption">
         <h1>问题反映</h1>
-      	<p class="profile">问题反映具体内容。。。。</p>
+      	<p class="profile">问题反映具体内容。</p>
       	<p>
       		<button type="button" id="myButton" data-loading-text="Loading..." class="btn btn-primary" autocomplete="off" style="margin-left:50%;" onclick="showDetail(3);">
   				详情...
@@ -211,7 +211,7 @@
       <img src="../images/questionanswer.jpg" alt="../images" style="width:100%;height:650px;">
       <div class="carousel-caption">
         <h1>问卷调查</h1>
-      	<p class="profile">问卷调查具体内容。。。。</p>
+      	<p class="profile">问卷调查具体内容。</p>
       	<p>
       		<button type="button" id="myButton" data-loading-text="Loading..." class="btn btn-primary" autocomplete="off" style="margin-left:50%;" onclick="showDetail(4);">
   				详情...
@@ -233,7 +233,7 @@
 </div>
 	</div>
     <%-- 底部 --%>
-	<div id="footer" class="g-foot" style="display:block;margin-top:30px;"><span>Copyright &copy; 2017, 四川大学计算机学院. All rights reserved.</span></div>
+	<div id="footer" class="g-foot" style="display:block;margin-top:30px;"><span style="display:block;text-align:center;">Copyright &copy; 2017, 四川大学计算机学院. All rights reserved.</span></div>
   
   <!-- Placed at the end of the document so the pages load faster -->
   <script src="${contextPath}/lib/jquery-1.8.3.min.js"></script>
@@ -241,13 +241,14 @@
   <!-- koala js -->
   <script src="${contextPath}/lib/koala-ui.plugin.js"></script>
   <script src="${contextPath}/lib/koala-tree.js"></script>
-  <!-- 
+  <!-- 20171202nt -->
+  <script src="${contextPath}/js/domain/taskOperate.js"></script>
   <script src="${contextPath}/lib/validate.js"></script>
   <script src="${contextPath}/lib/validateForm/validateForm.js"></script>
   <script src="${contextPath}/lib/respond.min.js"></script>
   <script src="${contextPath}/lib/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
   <script src="${contextPath}/lib/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
-   -->
+  
   <!-- security
   <script src="${contextPath}/js/security/role.js" ></script>
   <script src="${contextPath}/js/security/user.js" ></script>
