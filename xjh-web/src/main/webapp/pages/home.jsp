@@ -199,12 +199,12 @@
       </div>
     </div>
     <div class="item">
-      <img src="../images/feed.jpg" alt="../images" style="width:100%;height:650px;">
+      <img src="../images/feed.jpg" alt="社区问题我反映" style="width:100%;height:650px;">
       <div class="carousel-caption">
         <h1>社区问题我反映</h1>
       	<p class="profile">提供平台供各社区院落居民对本院落、社区、街道办的各类问题进行反映。</p>
       	<p>
-      		<button type="button" id="myButton" data-loading-text="Loading..." class="btn btn-primary" autocomplete="off" style="margin-left:50%;" onclick="showDetail(3);">
+      		<button type="button" id="myButton" data-loading-text="Loading..." class="btn btn-primary" autocomplete="off" style="margin-left:50%;" onclick="giveMessage();">
   				详情>>
 			</button>
 		</p>
@@ -294,24 +294,24 @@ $(function(){
  	//$("#userInfo").text(' ${curSubject.name}');
 });
 /**
- * 查看“科技惠民技术研发项目”详情介绍。
+ * “社区问题我反映”提示。
    @param
    @version
-       20171203pm
+       20171203nt
        1.new.
  */
-var viewProfile = function(){
-	var url = contextPath + "/pages/common/template/ModalDialog-template-full.jsp";
+var giveMessage = function(){
+	var url = contextPath + "/pages/common/template/ModalDialog-template-md.jsp";
     $.get(url).done(function(html){
     	var $dialog = $(html);
-    	$dialog.find("form").html("社区民主问政互动平台作为成都市科学技术局立项资助的科技惠民技术研发项目，符合国家、省、市经济社会发展战略和相关产业政策，重点围绕城乡发展、人口健康、生态环境、公共安全等与社会发展密切相关领域的重大科技需求，实施科技惠民技术研发和应用示范工程，不断推动科技创新支撑城乡建设和管理、科技成果惠及城乡居民生活。");
+    	$dialog.find(".modal-body").html("<p>请打开微信扫一扫，扫描二维码留言</p>"+"<p><img src='../images/QRCode.png' alt='ORCode.png' style='height:200px;width:200px;'></p>");
     	$dialog.modal({
     		keyboard:false
     	}).on({
     	    'hidden.bs.modal': function(){$(this).remove();}
     	});
     	initViewMode($dialog);
-    	$dialog.find(".modal-title").html("社区民主问政互动平台");
+    	$dialog.find(".modal-title").html("微信扫一扫留言");
 	});
 };//End of function viewProfile.
 /**
