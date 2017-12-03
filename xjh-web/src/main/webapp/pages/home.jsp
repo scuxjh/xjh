@@ -9,7 +9,7 @@
 <meta http-equiv="Expires" content="0" />
 <html lang="zh-CN">
 <head>
-  <title>肖家河社区系统</title>
+  <title>社区民主问政互动平台</title>
   <!-- 20160905nt-->
   		<link rel="stylesheet" href="${contextPath}/lib/bootstrap/css/bootstrap.min.css" />
   		<link rel="stylesheet" href="${contextPath}/css/koala.css"/>
@@ -28,6 +28,11 @@
   		-->
  
     <style>
+    	/*修改导航栏字体样式 20171203nt*/
+    	.navbar-default .navbar-nav>li>a {
+    		color: #000;
+    		font-size: 25px;
+		}
         .nav-stacked .node ul{
             display:none;
         }
@@ -115,7 +120,7 @@
 	<nav class="navbar navbar-default navbar-fixed-top" style="color:black;">
 		<div class="container">
 			<div class="navbar-header">
-				<a class="navbar-brand" href="#">肖家河民主问政平台</a>
+				<a class="navbar-brand" href="#" title="科技惠民技术研发项目" style="color: #000;font-size: 30px;">社区民主问政互动平台</a>
 			</div>
 			<div id="navbar" class="navbar-collapse collapse">
           		<ul class="nav navbar-nav navbar-right">
@@ -160,22 +165,20 @@
     <div class="item active">
       <img src="../images/community.jpg" alt="../images" style="width:100%;height:650px;">
       <div class="carousel-caption" style="padding-top:-100px;">
-      	<h1>肖家河社区民主问政平台</h1>
-      	<p class="profile"></p>
-      	<!-- 
+      	<h1 title="科技惠民技术研发项目">社区民主问政互动平台</h1>
+      	<p class="profile">科技惠民技术研发项目，成都市科学技术局立项资助。</p>
       	<p>
-      		<button type="button" id="myButton" data-loading-text="Loading..." class="btn btn-primary" autocomplete="off" style="margin-left:50%;">
-  				详情...
+      		<button type="button" id="myButton" data-loading-text="Loading..." class="btn btn-primary" autocomplete="off" style="margin-left:50%;" onclick="viewProfile();">
+  				详情>>
 			</button>
 		</p>
-		 -->
       </div>
     </div>
     <div class="item">
       <img src="../images/news.jpg" alt="../images" style="width:100%;height:650px;">
       <div class="carousel-caption">
-      	<h1>社区新闻</h1>
-      	<p class="profile">社区新闻具体内容。</p>
+      	<h1>社区工作我监督</h1>
+      	<p class="profile">提供街道办院落信息、最新新闻、工作情况等社区及国内外新闻</p>
       	<p>
       		<button type="button" id="myButton" data-loading-text="Loading..." class="btn btn-primary" autocomplete="off" style="margin-left:50%;" onclick="showDetail(1);">
   				详情>>
@@ -186,11 +189,11 @@
     <div class="item">
       <img src="../images/policy.jpg" alt="../images" style="width:100%;height:650px;">
       <div class="carousel-caption">
-        <h1>发展献策</h1>
-      	<p class="profile">发展献策具体内容。</p>
+        <h1>社区发展我献策</h1>
+      	<p class="profile">提供街道办、社区、院落最新整改工程、发展信息，供各院落或指定社区院落居民查阅，收集居民针对各整改工程的反馈信息。</p>
       	<p>
       		<button type="button" id="myButton" data-loading-text="Loading..." class="btn btn-primary" autocomplete="off" style="margin-left:50%;" onclick="showDetail(2);">
-  				详情...
+  				详情>>
 			</button>
 		</p>
       </div>
@@ -198,11 +201,11 @@
     <div class="item">
       <img src="../images/feed.jpg" alt="../images" style="width:100%;height:650px;">
       <div class="carousel-caption">
-        <h1>问题反映</h1>
-      	<p class="profile">问题反映具体内容。</p>
+        <h1>社区问题我反映</h1>
+      	<p class="profile">提供平台供各社区院落居民对本院落、社区、街道办的各类问题进行反映。</p>
       	<p>
       		<button type="button" id="myButton" data-loading-text="Loading..." class="btn btn-primary" autocomplete="off" style="margin-left:50%;" onclick="showDetail(3);">
-  				详情...
+  				详情>>
 			</button>
 		</p>
       </div>
@@ -210,11 +213,11 @@
     <div class="item">
       <img src="../images/questionanswer.jpg" alt="../images" style="width:100%;height:650px;">
       <div class="carousel-caption">
-        <h1>问卷调查</h1>
-      	<p class="profile">问卷调查具体内容。</p>
+        <h1>社区建设我做主</h1>
+      	<p class="profile">提供问卷调查、投票信息供社区居民进行投票式意见反馈或选举。</p>
       	<p>
       		<button type="button" id="myButton" data-loading-text="Loading..." class="btn btn-primary" autocomplete="off" style="margin-left:50%;" onclick="showDetail(4);">
-  				详情...
+  				详情>>
 			</button>
 		</p>
       </div>
@@ -243,12 +246,13 @@
   <script src="${contextPath}/lib/koala-tree.js"></script>
   <!-- 20171202nt -->
   <script src="${contextPath}/js/domain/taskOperate.js"></script>
-  <script src="${contextPath}/lib/validate.js"></script>
-  <script src="${contextPath}/lib/validateForm/validateForm.js"></script>
   <script src="${contextPath}/lib/respond.min.js"></script>
   <script src="${contextPath}/lib/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
   <script src="${contextPath}/lib/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
-  
+  <!-- validate
+  <script src="${contextPath}/lib/validate.js"></script>
+  <script src="${contextPath}/lib/validateForm/validateForm.js"></script>
+   -->
   <!-- security
   <script src="${contextPath}/js/security/role.js" ></script>
   <script src="${contextPath}/js/security/user.js" ></script>
@@ -289,6 +293,48 @@ $(function(){
 $(function(){
  	//$("#userInfo").text(' ${curSubject.name}');
 });
+/**
+ * 查看“科技惠民技术研发项目”详情介绍。
+   @param
+   @version
+       20171203pm
+       1.new.
+ */
+var viewProfile = function(){
+	var url = contextPath + "/pages/common/template/ModalDialog-template-full.jsp";
+    $.get(url).done(function(html){
+    	var $dialog = $(html);
+    	$dialog.find("form").html("社区民主问政互动平台作为成都市科学技术局立项资助的科技惠民技术研发项目，符合国家、省、市经济社会发展战略和相关产业政策，重点围绕城乡发展、人口健康、生态环境、公共安全等与社会发展密切相关领域的重大科技需求，实施科技惠民技术研发和应用示范工程，不断推动科技创新支撑城乡建设和管理、科技成果惠及城乡居民生活。");
+    	$dialog.modal({
+    		keyboard:false
+    	}).on({
+    	    'hidden.bs.modal': function(){$(this).remove();}
+    	});
+    	initViewMode($dialog);
+    	$dialog.find(".modal-title").html("社区民主问政互动平台");
+	});
+};//End of function viewProfile.
+/**
+ * 查看“科技惠民技术研发项目”详情介绍。
+   @param
+   @version
+       20171203pm
+       1.new.
+ */
+var viewProfile = function(){
+	var url = contextPath + "/pages/common/template/ModalDialog-template-full.jsp";
+    $.get(url).done(function(html){
+    	var $dialog = $(html);
+    	$dialog.find("form").html("社区民主问政互动平台作为成都市科学技术局立项资助的科技惠民技术研发项目，符合国家、省、市经济社会发展战略和相关产业政策，重点围绕城乡发展、人口健康、生态环境、公共安全等与社会发展密切相关领域的重大科技需求，实施科技惠民技术研发和应用示范工程，不断推动科技创新支撑城乡建设和管理、科技成果惠及城乡居民生活。");
+    	$dialog.modal({
+    		keyboard:false
+    	}).on({
+    	    'hidden.bs.modal': function(){$(this).remove();}
+    	});
+    	initViewMode($dialog);
+    	$dialog.find(".modal-title").html("社区民主问政互动平台");
+	});
+};//End of function viewProfile.
 /**
  * 显示每个模块详情页面
    1 社区新闻；2 发展献策；3 问题反映；4 问卷调查

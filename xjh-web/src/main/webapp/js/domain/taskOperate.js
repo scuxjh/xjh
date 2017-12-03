@@ -130,7 +130,8 @@ var initSelect = function($form){
  */
 var initSingleSelect = function($singleSelectDom){
 	var selectKey = $singleSelectDom.attr("selectKey");
-	var url = contextPath + "/DataDictionary/getDictItems.koala?dictId="+selectKey;
+	console.log("11,in initSingleSelect,selectKey:"+selectKey);
+	var url = contextPath + "/DataDictionary/getDictItems.action?dictId="+selectKey;
 	$.ajax({
 		url: url,
 		async: false,
