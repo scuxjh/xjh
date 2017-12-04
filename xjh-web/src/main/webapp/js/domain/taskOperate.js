@@ -359,7 +359,8 @@ var initViewMode = function($dialog){
 	$dialog.find("#cancelBtn").html("关闭");
 	
 	//$dialog.find(":hidden").remove();
-	$dialog.find(":text,textarea").each(function(index, element){
+	//反馈献策文本框不调用此方法
+	$dialog.find(":text,textarea").not("#feedcommentID").each(function(index, element){
 		var $element = $(element);
 		var name = $element.attr("name");
 		//var id = $element.attr("id");
