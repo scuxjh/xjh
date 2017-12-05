@@ -3,6 +3,7 @@ package com.scu.xjh.application.impl;
 import java.util.List;
 import java.util.Set;
 
+import javax.inject.Inject;
 import javax.inject.Named;
 
 import org.springframework.transaction.annotation.Transactional;
@@ -13,6 +14,7 @@ import com.scu.xjh.feed.core.domain.Feed;
 @Named
 @Transactional
 public class FeedApplicationImpl implements FeedApplication {
+    
 
 	public Feed getFeed(Long id) {
 		return Feed.get(Feed.class, id);
@@ -24,7 +26,8 @@ public class FeedApplicationImpl implements FeedApplication {
 	}
 	
 	public void updateFeed(Feed feed) {
-		feed .save();
+		feed.save();
+		
 	}
 	
 	public void removeFeed(Feed feed) {

@@ -25,6 +25,8 @@ $(function (){
 	    initSearchPanel:function(){},
 	    initGridPanel: function(){
 	         var self = this;
+	         var timewidth="180px";
+	         var titlewidth="280px";
 	         //？？
 	         return $grid_feed.grid({
 	                identity: "id",
@@ -36,23 +38,11 @@ $(function (){
 	                url: contextPath+"/Feed/pageJson.action",
 	                columns: [
 	                            //name属性与feed的属性值对应
-	                     	    { title: '反馈标题', name: 'feedTitle', width: col_md}
-                               ,{ title: '所属类别', name: 'categoryName', width: col_sm}
-                               ,{ title: '是否前台显示', name: 'display', width: col_md, render: function(rowdata, name, index){
-	                         		//rowdata??
-                            	   var display = rowdata.display;
-	                         		var available = '<span class="glyphicon glyphicon-ok" style="color:#5CB85C;margin-left:15px;" title="是"></span>';
-	                         		var forbidden = '<span class="glyphicon glyphicon-remove" style="color:#D9534F;margin-left:15px;" title="否"></span>';
-	                         		if(display == "1"){
-	                         			return available;
-	                         		}else{
-	                         			return forbidden;
-	                         		}
-	                         	}}
-                               //col_sm是什么？index.jsp中的变量为什么可以直接使用
-                               ,{ title: '发布人员', name: 'adminId', width: col_sm}
-                               ,{ title: '创建时间', name: 'createTime', width: col_md}
-	                           ,{ title: '发布时间', name: 'startTime', width: col_md}
+	                     	    { title: '标题', name: 'feedTitle', width: titlewidth}
+                               ,{ title: '所属类别', name: 'categoryName', width: col_md}
+                               
+                               ,{ title: '创建时间', name: 'createTime', width: timewidth}
+	                           ,{ title: '发布时间', name: 'startTime', width: timewidth}
 	                           ,{ title: '操作', width: col_xs, render: function (rowdata, name, index)
 	                                 {
 	                                     var param = '"' + rowdata.id + '"';
@@ -159,103 +149,7 @@ $(function (){
             $grid_feed.getGrid().search(params);
         });
 });
-/**
- 	* addfeed 新增或修改 一条新闻。
-   @param
-       $grid  
-       feedId 主键。
-   @version
-   	20170118am
-       1.new.
- */
-var addfeed = function($grid, feedId){
-	
-	var url = contextPath + "/pages/common/template/ModalDialog-template-lg.jsp";
-	// $.get(url)请求载入信息,function(html)??html是什么？
-    $.get(url).done(function(html){
-    	var $dialog = $(html);
-    	$dialog.find(".modal-title").html("<b>新增</b>");
-    	url = contextPath+"/pages/domain/feed/Feed-form.jsp";
-    	$.get(url).done(function(html){
-    		$dialog.find('form').append($(html));
-    		var $form = $dialog.find('form');
-    		//20170118pm
-    		initForm($form);
-    		//20170816pm
-    		$form.find('#contentID').hide();
-    		var $content = $form.find("#summernoteDiv");
-	    	//$content.summernote({height:200,lang:'zh-CN'});//20170816pm
-	    	//var imageUrl = "https://imgsa.baidu.com/exp/pic/item/7a8a1446f21fbe09554416df62600c338644ada0.jpg";
-	    	$content.summernote({height:200,lang:'zh-CN',
-	    		callbacks: {
-	    			onImageUpload: function(files) {//20170823nt
-	    				var fileName = files[0].name;
-	    				var fileType = files[0].type;
-	    				var fileSize = files[0].size;
-	    				console.log("onImageUpload....,fileName:"+fileName+",fileType:"+fileType+",fileSize:"+fileSize);
-	    				if(fileType.indexOf('image') < 0) {$form.message({type: 'warning', content: '只能上传图片'}); return;}
-	    				if(fileSize > 5*1024*1024) {$form.message({type: 'warning', content: '图片尺寸最大5M'}); return;}
-	    				
-	    				//使用FormData对象添加字段方式上传文件.20170910pm
-	    				var formData = new FormData();
-	    				formData.append("file", files[0]);
-	    				var theUrl = contextPath + "/Feed/uploadImage.action";
-	    				$.ajax({
-	    				    url: theUrl,
-	    				    type: 'POST',
-	    				    datatype: 'json',
-	    				    data: formData,
-	    				    cache:false,
-	    				    traditional: true,
-	    				    contentType: false,
-	    				    processData: false,
-	    				    success: function (responseStr) {
-	    				    	if(responseStr.success){
-	    				    		console.log("上传文件成功。");
-	    				    		var imageUrl = contextPath + responseStr.data.imageUrl;
-	    				    		console.log("responseStr.data.imageUrl:"+imageUrl);
-	    				    		console.log("responseStr.data.message:"+responseStr.data.message);
-	    				    		$content.summernote('insertImage', imageUrl);
-	    				    	}
-	    				    },
-	    				    error: function () {console.log("请求服务器失败。");}
-	    				  });
-	    			}
-	    		}});//20170816pm
-    		$dialog.modal({
-                keyboard:false
-                //on()函数用于为指定元素的一个或多个事件绑定事件处理函数。
-            })
-    		.on({
-            	//remove() 方法删除被选元素及其子元素。
-               // "hidden.bs.modal": function(){$(this).remove();}
-            });
-    		//console.log("1111,in addfeed,feedId:"+feedId);
-    		if(feedId) {
-    			$dialog.find(".modal-title").html("<b>修改</b>");
-    			appendData2Form("Feed", $dialog, feedId);
-    		}
-            $dialog.find('#saveBtn').on('click', function(e){
-                  //if(!Validator.Validate($form))  return;//20160825nt
-                  //console.log("1111,in add..,serialize:"+$dialog.find('form').serialize());
-                  var contentSummernote = $content.summernote('code');//获取summernote中编辑的代码内容
-                  console.log("1111,in save,contentSummernote:"+contentSummernote);
-                  $dialog.find('#contentID').val(contentSummernote);
-                  var theUrl = contextPath+"/Feed/add.action";
-                  console.log($dialog.find('form').serialize());
-                  $.post(theUrl, $dialog.find('form').serialize()).done(function(result){
-                       if(result.success ){
-                    	   $dialog.modal('hide');
-                           $grid.getGrid().refresh();
-                           $grid.message({type: 'success', content: '操作成功'});
-                        }else{
-                           $dialog.find('.modal-content').message({type: 'error', content: result.errorMessage});
-                        }
-                  });//end of $.post.done().
-            });
-    	});
-    });
-};//end of function addfeed.
+
 /**
  * 查看一条新闻数据记录
    @param
@@ -273,7 +167,6 @@ var viewFeed = function(id){
     	$.get(url).done(function(html){
     		$dialog.find("form").append($(html));
     	    var $form = $dialog.find('form');
-    	    
     	    initForm($form);
     	    $dialog.modal({
     	    	keyboard:false
@@ -282,21 +175,25 @@ var viewFeed = function(id){
     	    });
     	    appendData2Form("Feed", $dialog, id, true);
     	    $form.find("#commentbuttonId").click( function(){
+    	    	$form.find(".commit").attr("value","");
     	    	$form.find(".commentcontent").show();
     	    });
     	   $form.find("#commentcommitId").click(function(){
     		   $form.find("#commentbuttonId").attr("value","再次献策");
-    		   addcomment($form);
+    		   addcomment($form,id);
     	   })
     	 });
 	});
 };//End of function viewFeed.
 //保存献策的内容和献策者的姓名和电话
-var addcomment=function($form){
-	$form
-}
-var viewComment=function(){
-	this.after()
+var addcomment=function($form,id){
+	var theUrl = contextPath+"/FeedComment/add.action";
+    $.post(theUrl, {feedId:id,
+    	commenterName:$form.find("#commenterNameId").attr("value"),
+    	commenterTel:$form.find("#commenterTelId").attr("value"),
+    	feedContent:$form.find("#feedContentID").attr("value"),
+    	});
+    $form.find(".commentcontent").hide();
 }
 /**
  * 更改新闻前端显示状态。
