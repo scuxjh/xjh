@@ -360,7 +360,7 @@ var initViewMode = function($dialog){
 	
 	//$dialog.find(":hidden").remove();
 	//反馈献策文本框不调用此方法
-	$dialog.find(":text,textarea").not("#feedcommentID").each(function(index, element){
+	$dialog.find(":text,textarea").not(".commit").each(function(index, element){
 		var $element = $(element);
 		var name = $element.attr("name");
 		//var id = $element.attr("id");

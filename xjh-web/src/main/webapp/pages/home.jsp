@@ -13,7 +13,7 @@
   <!-- 20160905nt-->
   		<link rel="stylesheet" href="${contextPath}/lib/bootstrap/css/bootstrap.min.css" />
   		<link rel="stylesheet" href="${contextPath}/css/koala.css"/>
-  		 
+  		 <link rel="stylesheet" href="${contextPath}/lib/bootstrap/css/wenjuan.css"/>
   		
   		<link rel="stylesheet" href="${contextPath}/css/koala.css"/>
   		<!--
@@ -246,6 +246,7 @@
   <script src="${contextPath}/lib/koala-tree.js"></script>
   <!-- 20171202nt -->
   <script src="${contextPath}/js/domain/taskOperate.js"></script>
+  <script  src="${contextPath}/js/domain/initQuestionnaire.js"></script>
   <script src="${contextPath}/lib/respond.min.js"></script>
   <script src="${contextPath}/lib/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
   <script src="${contextPath}/lib/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
