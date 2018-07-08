@@ -11,6 +11,8 @@
 <script type="text/javascript" src="<%=contextPath %>/lib/jquery-1.8.3.min.js"></script>
 <script type="text/javascript" src="<%=contextPath %>/lib/bootstrap/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="<%=contextPath %>/lib/respond.min.js"></script>
+
+
 <script type="text/javascript" src="<%=contextPath %>/lib/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
 <script type="text/javascript" src="<%=contextPath %>/lib/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
 <script type="text/javascript" src="<%=contextPath %>/lib/koala-ui.plugin.js"></script>
@@ -18,6 +20,7 @@
 <script type="text/javascript" src="<%=contextPath %>/lib/validate.js"></script>
 
 <link href="<%=contextPath %>/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="<%=contextPath %>/lib/bootstrap/css/wenjuan.css" rel="stylesheet" type="text/css" />
 <link href="<c:url value='/lib/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css' />
     " rel="stylesheet">
 <link href="<%=contextPath %>/css/koala.css" rel="stylesheet" type="text/css" />

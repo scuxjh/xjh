@@ -13,7 +13,7 @@
   <!-- 20160905nt-->
   		<link rel="stylesheet" href="${contextPath}/lib/bootstrap/css/bootstrap.min.css" />
   		<link rel="stylesheet" href="${contextPath}/css/koala.css"/>
-  		 
+  		 <link rel="stylesheet" href="${contextPath}/lib/bootstrap/css/wenjuan.css"/>
   		
   		<link rel="stylesheet" href="${contextPath}/css/koala.css"/>
   		<!--
@@ -246,6 +246,7 @@
   <script src="${contextPath}/lib/koala-tree.js"></script>
   <!-- 20171202nt -->
   <script src="${contextPath}/js/domain/taskOperate.js"></script>
+  <script  src="${contextPath}/js/domain/initQuestionnaire.js"></script>
   <script src="${contextPath}/lib/respond.min.js"></script>
   <script src="${contextPath}/lib/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
   <script src="${contextPath}/lib/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
@@ -344,12 +345,31 @@ var viewProfile = function(){
 var showDetail = function(type){
 	//console.log("11,in showDetail,type:"+type);
 	carouselContent.hide();
-	
+	//显示社区新闻
+	if(type==1){
 	var url = '/pages/domain/news/news-list.jsp';
 	var $listHtml = null;
 	$.get(url).done(function(newsListHtml){
 		$listHtml = $(newsListHtml);
 		$('#itemHtml').show().html($listHtml);
 	});
+	}
+	//显示发展献策
+	else if(type==2){
+		var url = '/pages/domain/feed/feed-list.jsp';
+		var $listHtml = null;
+		$.get(url).done(function(newsListHtml){
+			$listHtml = $(newsListHtml);
+			$('#itemHtml').show().html($listHtml);
+		});
+		}
+	else if(type==4){
+		var url = '/pages/domain/questionnaire/questionnaire-list.jsp';
+		var $listHtml = null;
+		$.get(url).done(function(newsListHtml){
+			$listHtml = $(newsListHtml);
+			$('#itemHtml').show().html($listHtml);
+		});
+		}
 };
 </script>
