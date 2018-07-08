@@ -8,24 +8,16 @@ import javax.inject.Named;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.scu.xjh.application.QuestionnaireApplication;
-import com.scu.xjh.questionnaire.core.domain.QuestionContent;
 import com.scu.xjh.questionnaire.core.domain.Questionnaire;
 
 @Named
 @Transactional
 public class QuestionnaireApplicationImpl implements QuestionnaireApplication {
-	public static Questionnaire currentquestionnaire;
+	public static long currentquestionnaireid;
 	
 	
 
-	public  Questionnaire getCurrentquestionnaire() {
-		return currentquestionnaire;
-	}
-
-
-	public static void setCurrentquestionnaire(Questionnaire currentquestionnaire) {
-		QuestionnaireApplicationImpl.currentquestionnaire = currentquestionnaire;
-	}
+	
 
 
 	public Questionnaire getQuestionnaire(Long id) {
@@ -35,13 +27,17 @@ public class QuestionnaireApplicationImpl implements QuestionnaireApplication {
 	
 	public void creatQuestionnaire(Questionnaire questionnaire) {
 		questionnaire.save();
-		setCurrentquestionnaire(questionnaire);
+		setCurrentquestionnaireid(questionnaire.getId());
 	}
-	public void creatQuestioncontent(QuestionContent questionContent){
-		questionContent.save();
-		//questionContent.setQuestionnaireId(currentquestionnaire);
-		
+	public  long getCurrentquestionnaireid() {
+		return currentquestionnaireid;
 	}
+
+
+	public static void setCurrentquestionnaireid(long currentquestionnaireid) {
+		QuestionnaireApplicationImpl.currentquestionnaireid = currentquestionnaireid;
+	}
+
 	
 	public void updateQuestionnaire(Questionnaire questionnaire) {
 		questionnaire.save();

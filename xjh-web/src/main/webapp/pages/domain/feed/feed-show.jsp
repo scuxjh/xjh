@@ -179,8 +179,9 @@ var viewFeed = function(id){
     	    	$form.find(".commentcontent").show();
     	    });
     	   $form.find("#commentcommitId").click(function(){
-    		   $form.find("#commentbuttonId").attr("value","再次献策");
-    		  // if($(this).prevAll("#feedContent").val()!=null)
+    		   $form.find("#commentbuttonId").attr("value","再次献策haha");
+    		   
+    		   if($(this).prevAll("#feedCommentId").val()!=null)
     		   addcomment($form,id);
     	   })
     	 });
