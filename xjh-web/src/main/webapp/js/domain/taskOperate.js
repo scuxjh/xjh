@@ -338,8 +338,9 @@ var appendData2Form = function(requestMapping, $dialog, id, viewMode){
 		}
 		//数据回显时，回显summernote代码。viewMode查看模式不回显summernote。20170910pm
 		if(!viewMode && $form.find('#summernoteDiv'))  $form.find('#summernoteDiv').summernote('code', $form.find('#contentID').val());
+		if(viewMode) initViewMode($dialog);
 		
-		if(viewMode)  initViewMode($dialog);//20160802pm
+		//if(viewMode)  initViewMode($dialog);//20160802pm
 	});
 };
 
@@ -352,6 +353,7 @@ var appendData2Form = function(requestMapping, $dialog, id, viewMode){
      * 20170119nt
      *     1.new
  */
+
 var initViewMode = function($dialog){
 	console.log("1111,in initViewMode()");
 	$dialog.find(".modal-title").html("查看");
