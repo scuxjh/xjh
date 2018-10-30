@@ -236,7 +236,7 @@
 </div>
 	</div>
     <%-- 底部 --%>
-	<div id="footer" class="g-foot" style="display:block;margin-top:30px;"><span style="display:block;text-align:center;">Copyright &copy; 2017, 四川大学计算机学院. All rights reserved.</span></div>
+	<div id="footer" class="g-foot" style="display:block;margin-top:30px;"><span style="display:block;text-align:center;">Copyright &copy; 2018, 四川大学计算机学院. All rights reserved.</span></div>
   
   <!-- Placed at the end of the document so the pages load faster -->
   <script src="${contextPath}/lib/jquery-1.8.3.min.js"></script>
