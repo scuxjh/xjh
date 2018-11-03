@@ -36,9 +36,6 @@ $(function (){
 	                columns: [
 	                     	    { title: '问卷标题', name: 'questionnaireTitle', width: col_md}
                                ,{ title: '所属类别', name: 'categoryName', width: col_sm}
-                               
-                               //col_sm是什么？index.jsp中的变量为什么可以直接使用
-                               ,{ title: '发布人员', name: 'adminId', width: col_sm}
                                ,{ title: '创建时间', name: 'createTime', width: col_md}
 	                           ,{ title: '发布时间', name: 'startTime', width: col_md}
 	                           ,{ title: '操作', width: col_xs, render: function (rowdata, name, index)
