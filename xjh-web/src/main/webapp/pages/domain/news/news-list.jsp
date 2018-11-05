@@ -29,7 +29,7 @@ $(function (){
 	                    ],
 	                url: "/news/pageJson.action",//contextPath+
 	                columns: [
-	                     	    { title: '标题', name: 'newsTitle', width: col_md}
+	                     	    { title: '标题', name: 'newsTitle', width: col_lg}
                                ,{ title: '所属类别', name: 'categoryName', width: col_sm}
                                /*,{ title: '是否前台显示', name: 'display', width: col_md, render: function(rowdata, name, index){
 	                         		var display = rowdata.display;
