@@ -2,7 +2,7 @@
 <%-- 引入所有得标签库 TagLib 并且设置上下文路径 --%>
 <%//@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%-- 放置contextPath作用，其他得页面直接可以拿到放置contextPath，不需要再重复定义一个--%>
-<%//pageContext.setAttribute("contextPath", request.getContextPath());%>
+<%pageContext.setAttribute("contextPath", request.getContextPath());%>
 <!DOCTYPE html>
 <meta http-equiv="Cache-Control" content="no-store" />
 <meta http-equiv="Pragma" content="no-cache" />
@@ -11,6 +11,7 @@
 <head>
   <title>社区民主问政互动平台</title>
   <!-- 20160905nt-->
+  	<!-- <link rel="stylesheet" href="${pageContext.request.contextPath}/lib/bootstrap/css/bootstrap.min.css" />-->
   		<link rel="stylesheet" href="${contextPath}/lib/bootstrap/css/bootstrap.min.css" />
   		<link rel="stylesheet" href="${contextPath}/css/koala.css"/>
   		 <link rel="stylesheet" href="${contextPath}/lib/bootstrap/css/wenjuan.css"/>
@@ -163,7 +164,9 @@
   <!-- Wrapper for slides -->
   <div class="carousel-inner" role="listbox">
     <div class="item active">
-      <img src="../images/community.jpg" alt="../images" style="width:100%;height:650px;">
+      <!-- <img src="../images/community.jpg" alt="../images" style="width:100%;height:650px;">
+       20181110-->
+      <img src="./images/community.jpg" alt="../images" style="width:100%;height:650px;">
       <div class="carousel-caption" style="padding-top:-100px;">
       	<h1 title="科技惠民技术研发项目">社区民主问政互动平台</h1>
       	<p class="profile">科技惠民技术研发项目，成都市科学技术局立项资助。</p>
@@ -175,7 +178,7 @@
       </div>
     </div>
     <div class="item">
-      <img src="../images/news.jpg" alt="../images" style="width:100%;height:650px;">
+      <img src="./images/news.jpg" alt="./images" style="width:100%;height:650px;">
       <div class="carousel-caption">
       	<h1>社区工作我监督</h1>
       	<p class="profile">提供街道办院落信息、最新新闻、工作情况等社区及国内外新闻</p>
@@ -187,7 +190,7 @@
       </div>
     </div>
     <div class="item">
-      <img src="../images/policy.jpg" alt="../images" style="width:100%;height:650px;">
+      <img src="./images/policy.jpg" alt="../images" style="width:100%;height:650px;">
       <div class="carousel-caption">
         <h1>社区发展我献策</h1>
       	<p class="profile">提供街道办、社区、院落最新整改工程、发展信息，供各院落或指定社区院落居民查阅，收集居民针对各整改工程的反馈信息。</p>
@@ -199,7 +202,7 @@
       </div>
     </div>
     <div class="item">
-      <img src="../images/feed.jpg" alt="社区问题我反映" style="width:100%;height:650px;">
+      <img src="./images/feed.jpg" alt="社区问题我反映" style="width:100%;height:650px;">
       <div class="carousel-caption">
         <h1>社区问题我反映</h1>
       	<p class="profile">提供平台供各社区院落居民对本院落、社区、街道办的各类问题进行反映。</p>
@@ -211,7 +214,7 @@
       </div>
     </div>
     <div class="item">
-      <img src="../images/questionanswer.jpg" alt="../images" style="width:100%;height:650px;">
+      <img src="./images/questionanswer.jpg" alt="./images" style="width:100%;height:650px;">
       <div class="carousel-caption">
         <h1>社区建设我做主</h1>
       	<p class="profile">提供问卷调查、投票信息供社区居民进行投票式意见反馈或选举。</p>
@@ -347,7 +350,8 @@ var showDetail = function(type){
 	carouselContent.hide();
 	//显示社区新闻
 	if(type==1){
-	var url = '/pages/domain/news/news-list.jsp';
+	//var url = '/pages/domain/news/news-list.jsp';
+	var url = contextPath + '/pages/domain/news/news-list.jsp';//20181110pm
 	var $listHtml = null;
 	$.get(url).done(function(newsListHtml){
 		$listHtml = $(newsListHtml);
@@ -356,7 +360,7 @@ var showDetail = function(type){
 	}
 	//显示发展献策
 	else if(type==2){
-		var url = '/pages/domain/feed/feed-list.jsp';
+		var url = contextPath + '/pages/domain/feed/feed-list.jsp';
 		var $listHtml = null;
 		$.get(url).done(function(newsListHtml){
 			$listHtml = $(newsListHtml);
@@ -364,7 +368,7 @@ var showDetail = function(type){
 		});
 		}
 	else if(type==4){
-		var url = '/pages/domain/questionnaire/questionnaire-list.jsp';
+		var url = contextPath + '/pages/domain/questionnaire/questionnaire-list.jsp';
 		var $listHtml = null;
 		$.get(url).done(function(newsListHtml){
 			$listHtml = $(newsListHtml);
