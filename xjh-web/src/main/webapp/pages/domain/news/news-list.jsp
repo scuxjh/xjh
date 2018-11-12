@@ -27,7 +27,8 @@ $(function (){
 	                buttons: [
 	                       {content: '<button class="btn btn-success" type="button"><span class="glyphicon glyphicon-search"></span>&nbsp;高级搜索&nbsp; <span class="caret"></span> </button>', action: 'newsQuery'}
 	                    ],
-	                url: "/news/pageJson.action",//contextPath+
+	                //url: "/news/pageJson.action",//contextPath+
+	                url: contextPath + "/news/pageJson.action",//20181110pm
 	                columns: [
 	                     	    { title: '标题', name: 'newsTitle', width: col_lg}
                                ,{ title: '所属类别', name: 'categoryName', width: col_sm}
