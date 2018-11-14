@@ -23,11 +23,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.dayatang.utils.Page;
 
+import com.scu.xjh.common.core.utils.DateUtils;
+import com.scu.xjh.message.facade.MessageFacade;
+import com.scu.xjh.message.facade.dto.MessageDTO;
 import com.scu.xjh.news.facade.NewsFacade;
 import com.scu.xjh.news.facade.dto.NewsDTO;
 
 import org.openkoala.koala.commons.InvokeResult;
-
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
@@ -39,6 +41,8 @@ public class NewsController {
 		
 	@Inject
 	private NewsFacade newsFacade;
+	@Inject
+	private MessageFacade msgFacade;
 	
 	private static final Logger LOGGER = LoggerFactory.getLogger(NewsController.class);
 	
@@ -59,7 +63,8 @@ public class NewsController {
 		request.setCharacterEncoding("utf-8");//设置编码
 		//配置文件上传的路劲
 		//String path = request.getRealPath("/uploadMessage") + "/";
-		String path = request.getSession().getServletContext().getRealPath("/uploadMessage") + "/";
+		//String path = request.getSession().getServletContext().getRealPath("/uploadMessage") + "/";
+		String path = "d:\\upload\\uploadMessage\\";//20181113
 		File dirFile = new File(path);
 		if(!dirFile.exists()){
 			dirFile.mkdir();
@@ -96,13 +101,13 @@ public class NewsController {
 			String userName = URLDecoder.decode((String) request.getAttribute("username"), "utf-8");
 //			String userName = (String) request.getAttribute("username");
 //			userName = StringEscapeUtils.unescapeJava(userName);
-			LOGGER.info("111, userName:" + userName);
 			String userPhoneNumber = (String) request.getAttribute("userphonenumber");
-			String time = (String) request.getAttribute("time");
-			String fileName =  userName + userPhoneNumber +" "+ time +".mp3";
-					
+//			String time = (String) request.getAttribute("time");
+//			String fileName =  userName + userPhoneNumber +" "+ time +".mp3";
+			String fileName =  userName + DateUtils.getTimeInMillis() +".mp3";//20181112
+			LOGGER.info("111, userName:" + userName + ", userPhoneNumber:" + userPhoneNumber + ", fileName:" + fileName);
 			String destPath = path + fileName;
-			System.out.println("destPath=" + destPath);
+			LOGGER.info("222, destPath:" + destPath);
 			
 			//真正写在磁盘上
 			File file = new File(destPath);
@@ -117,11 +122,18 @@ public class NewsController {
 			}
 			in.close();
 			out.close();
+			//20181112
+			MessageDTO msgDTO = new MessageDTO();
+			msgDTO.setAudioFilepath(destPath);
+			msgDTO.setName(userName);
+			msgDTO.setPhoneNum(userPhoneNumber);
+			msgFacade.createMessage(msgDTO);
 			
-			String imageUrl = request.getContextPath()+"/uploadMessage/" + fileName;
-			LOGGER.info("imageUrl:"+imageUrl);
+//			String imageUrl = request.getContextPath()+"/uploadMessage/" + fileName;
+//			LOGGER.info("imageUrl:"+imageUrl);
 			resultMap.put("message", "上传成功。");
-			resultMap.put("imageUrl", imageUrl);
+//			resultMap.put("imageUrl", imageUrl);
+			LOGGER.info("333, end.");
 		} catch (Exception e) {
 			// TODO: handle exception
 		} finally{
