@@ -25,8 +25,8 @@ $(function (){
 	    initSearchPanel:function(){},
 	    initGridPanel: function(){
 	         var self = this;
-	         var timewidth="180px";
-	         var titlewidth="280px";
+	         var timewidth="150px";
+	         var titlewidth="250px";
 	         //？？
 	         return $grid_feed.grid({
 	                identity: "id",
@@ -40,8 +40,6 @@ $(function (){
 	                            //name属性与feed的属性值对应
 	                     	    { title: '标题', name: 'feedTitle', width: titlewidth}
                                ,{ title: '所属类别', name: 'categoryName', width: col_md}
-                               
-                               ,{ title: '创建时间', name: 'createTime', width: timewidth}
 	                           ,{ title: '发布时间', name: 'startTime', width: timewidth}
 	                           ,{ title: '操作', width: col_xs, render: function (rowdata, name, index)
 	                                 {
@@ -176,10 +174,11 @@ var viewFeed = function(id){
     	    appendData2Form("Feed", $dialog, id, true);
     	    $form.find("#commentbuttonId").click( function(){
     	    	$form.find(".commit").attr("value","");
+    	    	$form.find("#commentbuttonId").hide();
     	    	$form.find(".commentcontent").show();
     	    });
     	   $form.find("#commentcommitId").click(function(){
-    		   $form.find("#commentbuttonId").attr("value","再次献策");
+    		   $form.find("#commentbuttonId").show().attr("value","再次献策");
     		  // if($(this).prevAll("#feedContent").val()!=null)
     		   addcomment($form,id);
     	   })

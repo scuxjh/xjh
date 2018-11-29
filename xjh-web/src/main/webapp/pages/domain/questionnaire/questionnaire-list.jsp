@@ -34,9 +34,8 @@ $(function (){
 	                url: contextPath+"/Questionnaire/pageJson.action",
 	                //name属性与questionnaireDTO的字段对应
 	                columns: [
-	                     	    { title: '问卷标题', name: 'questionnaireTitle', width: col_md}
+	                     	    { title: '问卷标题', name: 'questionnaireTitle', width: "250px"}
                                ,{ title: '所属类别', name: 'categoryName', width: col_sm}
-                               ,{ title: '创建时间', name: 'createTime', width: col_md}
 	                           ,{ title: '发布时间', name: 'startTime', width: col_md}
 	                           ,{ title: '操作', width: col_xs, render: function (rowdata, name, index)
 	                                 {
@@ -85,6 +84,7 @@ $(function (){
                 var $this = $(this);
                 var name = $this.attr('name');
                 if(name){
+                	alert($this.val());
                     params[name] = $this.val();
                 }
             });
@@ -128,7 +128,10 @@ var viewquestion = function(id){
                 	var xx_value =[];//定义一个空数组  
                 	var questiontype=$(this).children(".dx_box").attr("data-t");
                 	var formname=$(this).find("#xxgroup").first().attr("name");
-                	if(questiontype==2)uanswer+=$(this).find("textarea").val();
+                	if(questiontype==2){
+                		uanswer+=$(this).find("textarea").val();
+                		uanswer+=";";
+                	}
                 		$(this).find("input:checked").each(function(){//遍历每一个名字为interest的复选框，其中选中的执行函数    
                 			
                 			var xxanswer=$(this).siblings(".xxwenzi").text();
@@ -138,7 +141,6 @@ var viewquestion = function(id){
                             });	
                 		//xx_value.push(";");
                 		 uanswer+=xx_value.toString();
-                	
                 });
                 $.post(theUrl,{
         			problemChoice:uanswer,

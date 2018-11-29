@@ -9,6 +9,10 @@
     text-align: center;
     font-size: 13px;
     width:600px;/*定宽*/
+}
+.btn{
+width:70px;
+height:50px;
 }</style>
 <div class="modal-body" style="padding-left:45px; padding-right:65px;padding-top:10px;">
 	<form class="form-horizontal page_form">
@@ -42,19 +46,14 @@
                     </div>
                    
                     <!-- 第4行 -->
-                    <div class="form-group">
-        	         <div class="row">
-                <div class="col-md-10" style="text-align:center;">
-                	<input type="button" name="commentbutton" id="commentbuttonId" value="献策" >
+                <div  style="text-align:center;">
+                	<input type="button" name="commentbutton" id="commentbuttonId" value="献策"  style="height:50px;width:90px;margin:10px"  ></input>
                 	
-                    
 				</div>
-            </div>
-		</div>
 		<div class="commentcontent"hidden="hidden" style="text-align:center;">
 		<span><b>姓名：</b></span>&nbsp&nbsp<input class="commit" type="text" name="commenterName" id="commenterNameId" placeholder="填写您的姓名">&nbsp&nbsp&nbsp&nbsp<span><b>电话：<b>&nbsp&nbsp</span><input class="commit"  type="text" name="commenterTel" id="commenterTelId" placeholder="填写您的电话"><br>
              <br> <textarea class="commit" id="feedContentID" name="feedContent" rows="8" value="" cols="45" placeholder="填写您宝贵的建议"></textarea><br>
-               <input type="button" name="commentcommit" id="commentcommitId" value="提交" >  
+               <input type="button" name="commentcommit" id="commentcommitId" value="提交" style="height:50px;width:90px;" >  <input type="button" name="commentbutton" id="commentbuttonId" value="重置"  style="height:50px;width:90px;margin:10px"  >
               </div>   
                 </form>
             </div><!-- End of model-body. -->
