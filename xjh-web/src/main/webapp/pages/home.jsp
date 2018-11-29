@@ -308,7 +308,7 @@ var giveMessage = function(){
 	var url = contextPath + "/pages/common/template/ModalDialog-template-md.jsp";
     $.get(url).done(function(html){
     	var $dialog = $(html);
-    	$dialog.find(".modal-body").html("<p>请打开微信扫一扫，扫描二维码留言</p>"+"<p><img src='../images/QRCode.png' alt='ORCode.png' style='height:200px;width:200px;'></p>");
+    	$dialog.find(".modal-body").html("<p>请打开微信扫一扫，扫描二维码留言</p>"+"<p><img src='./images/QRCode.png' alt='ORCode.png' style='height:200px;width:200px;'></p>");
     	$dialog.modal({
     		keyboard:false
     	}).on({

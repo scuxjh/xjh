@@ -65,6 +65,7 @@ public class NewsController {
 		//String path = request.getRealPath("/uploadMessage") + "/";
 		//String path = request.getSession().getServletContext().getRealPath("/uploadMessage") + "/";
 		String path = "d:\\upload\\uploadMessage\\";//20181113
+		String contextPath = "\\uploadMessage\\";//20181129
 		File dirFile = new File(path);
 		if(!dirFile.exists()){
 			dirFile.mkdir();
@@ -123,8 +124,9 @@ public class NewsController {
 			in.close();
 			out.close();
 			//20181112
+			String contextPathFile = contextPath + fileName;
 			MessageDTO msgDTO = new MessageDTO();
-			msgDTO.setAudioFilepath(destPath);
+			msgDTO.setAudioFilepath(contextPathFile);//20181129
 			msgDTO.setName(userName);
 			msgDTO.setPhoneNum(userPhoneNumber);
 			msgFacade.createMessage(msgDTO);
