@@ -24,6 +24,7 @@ $(function (){
 	         return $grid_news.grid({
 	                identity: "id",
 	                lockWidth: true,
+	                minheight: 1400,
 	                buttons: [
 	                       {content: '<button class="btn btn-success" type="button"><span class="glyphicon glyphicon-search"></span>&nbsp;高级搜索&nbsp; <span class="caret"></span> </button>', action: 'newsQuery'}
 	                    ],
